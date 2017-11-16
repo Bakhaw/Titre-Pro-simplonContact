@@ -33,7 +33,7 @@ router.get('/:id', (req, res) => {
 router.post('/:id/update', (req, res) => {
   Contact.findByIdAndUpdate(req.params.id, req.body, (err, contact) => {
     if (err) res.send(err)
-    res.json({message: 'le contact à bien été modifié'})
+    res.redirect("http://localhost:3000/")
   })
 })
 
