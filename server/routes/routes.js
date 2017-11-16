@@ -7,10 +7,10 @@ const router = express.Router();
 router.post('/add', (req, res) => {
   const newContact = new Contact(req.body);
 
-  newContact.save((err, contact) => {
+  newContact.save((err) => {
     if (err) res.send(err)
-    res.json({message: `${contact.nom} à bien été crée`})
   })
+  res.redirect('http://localhost:3000/')
 })
 
 // #GET method
@@ -39,10 +39,10 @@ router.post('/:id/update', (req, res) => {
 
 // #DELETE method
 router.get('/:id/delete', (req, res) => {
-  Contact.findByIdAndRemove(req.params.id, (err, contact) => {
+  Contact.findByIdAndRemove(req.params.id, (err) => {
     if (err) res.send(err)
-    res.json({message: 'le contact à bien été supprimé'})
   })
+  res.redirect('http://localhost:3000/')
 })
 
 module.exports = router;
