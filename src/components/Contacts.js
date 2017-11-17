@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
-import Form from './Form';
 import DeleteButton from './DeleteButton';
 import EditForm from './EditForm';
 
 class Contacts extends Component {
   state = {
-          formToggle: false
+          formToggle: false,
+          search: '',
       }
  handleDisplay = () => {
     this.setState({
             formToggle: this.state.formToggle ? false : true
     })
+  }
+  updateSearch(e) {
+    this.setState({
+      search: e.target.value
+    });
   }
 
   render() {
@@ -18,17 +23,19 @@ class Contacts extends Component {
             "display": this.state.formToggle ? "inline" : "none"
         }
 
+        const contacts = this.props.displayContacts.filter(contact => {
+          return contact.nom.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
+        })
+
     return (
-      <div className="container-fluid d-flex flex-column">
-        {/* formulaire */}
-        <div className="formulaire col-md-6">
-          <Form />
-        </div>
+      <div className="container-fluid">
         {/* contacts */}
-        <div className="container-fluid">
-          <h2>VOS CONTACTS:</h2>
+          <div className="text-center">
+            <h1 className="text-secondary">Vos contacts</h1>
+            <input className="form-control col-md-4 contactInput" type="text" value={this.state.search} onChange={this.updateSearch.bind(this)} placeholder="Rechercher un contact"/>
+          </div>
           <ul className="d-flex flex-wrap">
-            {this.props.displayContacts.map((contact, index) =>
+            {contacts.map((contact, index) =>
               <li key={index} className="col-md-4 d-flex flex-column justify-content-around align-items-baseline">
                 <p><span className="infos text-secondary">Nom:</span> {contact.nom}</p>
                 <p><span className="infos text-secondary">Prénom:</span> {contact.prenom}</p>
@@ -39,8 +46,8 @@ class Contacts extends Component {
                 {contact.telephone.work && <p><span className="infos text-secondary">Contact pro:</span> {contact.telephone.work}</p>}
                 {contact.telephone.mobile && <p><span className="infos text-secondary">Contact perso:</span> {contact.telephone.mobile}</p>}
                 <div className="d-flex">
-                  <div className="edit-button">
-                      <button type="submit" className="btn btn-light btn-sm" onClick={() => this.handleDisplay()}>Modifier</button>
+                  <div className="editButton">
+                      <button type="submit" className="btn btn-secondary btn-sm" onClick={() => this.handleDisplay()}>Modifier</button>
                   </div>
                   <div style={displayer}>
                     <EditForm id={contact._id} nom={contact.nom} prenom={contact.prenom} titre={contact.titre} entreprise={contact.entreprise} email={contact.email} adresse={contact.adresse} mobile={contact.mobile} work={contact.work}/>
@@ -51,7 +58,6 @@ class Contacts extends Component {
             )}
           </ul>
         </div>
-      </div>
     );
   }
 

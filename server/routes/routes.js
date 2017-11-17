@@ -10,7 +10,7 @@ router.post('/add', (req, res) => {
   newContact.save((err) => {
     if (err) res.send(err)
   })
-  res.redirect('http://localhost:3000/')
+  res.redirect('http://localhost:3000/ajouter_un_contact')
 })
 
 // #GET method
@@ -33,7 +33,7 @@ router.get('/:id', (req, res) => {
 router.post('/:id/update', (req, res) => {
   Contact.findByIdAndUpdate(req.params.id, req.body, (err, contact) => {
     if (err) res.send(err)
-    res.redirect("http://localhost:3000/")
+    res.redirect("http://localhost:3000/contacts")
   })
 })
 
@@ -42,7 +42,7 @@ router.get('/:id/delete', (req, res) => {
   Contact.findByIdAndRemove(req.params.id, (err) => {
     if (err) res.send(err)
   })
-  res.redirect('http://localhost:3000/')
+  res.redirect('http://localhost:3000/contacts')
 })
 
 module.exports = router;
