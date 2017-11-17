@@ -5,7 +5,7 @@ class EditForm extends Component {
   render() {
     return (
       <div className="container-fluid editForm">
-        <form action={`http://localhost:3005/${this.props.id}/update`} method="POST" className="">
+        <form action={`http://localhost:3005/${this.props.id}/update`} method="POST" className="d-flex flex-column align-items-center">
           <div>
             <input className="form-control" defaultValue={this.props.nom} name="nom" placeholder="Nom"/>
             <input className="form-control" defaultValue={this.props.prenom} name="prenom" placeholder="Prénom"/>
@@ -18,7 +18,7 @@ class EditForm extends Component {
             <input className="form-control" defaultValue={this.props.mobile} name="telephone.mobile" placeholder="Contact Perso"/>
             <input className="form-control" defaultValue={this.props.work} name="telephone.work" placeholder="Contact Pro"/>
           </div>
-          <button type="submit" className="btn btn-light">Modifier</button>
+          <button type="submit" className="btn btn-secondary">Modifier</button>
         </form>
       </div>
     );
