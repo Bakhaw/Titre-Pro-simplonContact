@@ -43,7 +43,7 @@ class Contacts extends Component {
                       <button type="submit" className="btn btn-light btn-sm" onClick={() => this.handleDisplay()}>Modifier</button>
                   </div>
                   <div style={displayer}>
-                    <EditForm id={contact._id}/>
+                    <EditForm id={contact._id} nom={contact.nom} prenom={contact.prenom} titre={contact.titre} entreprise={contact.entreprise} email={contact.email} adresse={contact.adresse} mobile={contact.mobile} work={contact.work}/>
                   </div>
                   <DeleteButton id={contact._id}/>
                 </div>
