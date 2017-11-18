@@ -47,17 +47,21 @@ componentDidMount() {
       <div>
         <Router>
           <div>
-            <ul>
-              <li><Link to="/accueil">Accueil</Link></li>
-              <li>
-                <Link to="/contacts">Vos contacts</Link>
+            <ul className="d-flex">
+              <li className="btn btn-secondary">
+                <Link className="text-light" to="/">Accueil</Link>
               </li>
-              <li><Link to="/ajouter_un_contact">Ajouter des contacts à votre répértoire</Link></li>
+              <li className="btn btn-secondary">
+                <Link className="text-light" to="/contacts">Vos contacts</Link>
+              </li>
+              <li className="btn btn-secondary">
+                <Link className="text-light" to="/ajouter_un_contact">Ajouter des contacts à votre répértoire</Link>
+              </li>
             </ul>
 
             <hr />
 
-            <Route exact path="/accueil" component={Home}/>
+            <Route exact path="/" component={Home}/>
             <Route path="/contacts" render={myContacts}/>
             <Route path="/ajouter_un_contact" component={Form}/>
           </div>
