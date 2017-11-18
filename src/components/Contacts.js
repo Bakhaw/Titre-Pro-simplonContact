@@ -24,7 +24,8 @@ class Contacts extends Component {
         }
 
         const contacts = this.props.displayContacts.filter(contact => {
-          return contact.nom.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
+          const str = (contact.nom) + (contact.prenom) + (contact.telephone.mobile) + (contact.telephone.work)
+          return str.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
         })
 
     return (
@@ -50,7 +51,7 @@ class Contacts extends Component {
                       <button type="submit" className="btn btn-secondary btn-sm" onClick={() => this.handleDisplay()}>Modifier</button>
                   </div>
                   <div style={displayer}>
-                    <EditForm id={contact._id} nom={contact.nom} prenom={contact.prenom} titre={contact.titre} entreprise={contact.entreprise} email={contact.email} adresse={contact.adresse} mobile={contact.mobile} work={contact.work}/>
+                    <EditForm id={contact._id} nom={contact.nom} prenom={contact.prenom} titre={contact.titre} entreprise={contact.entreprise} email={contact.email} adresse={contact.adresse} mobile={contact.telephone.mobile} work={contact.telephone.work}/>
                   </div>
                   <DeleteButton id={contact._id}/>
                 </div>
