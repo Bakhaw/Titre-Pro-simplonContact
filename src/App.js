@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import './App.css';
 import request from 'request';
 import Contacts from './components/Contacts';
@@ -44,24 +45,24 @@ componentDidMount() {
       //     <Contacts displayContacts={this.state.contacts} />
       //   </div>
       // </div>
-      <div>
+      <div >
+        <MuiThemeProvider>
         <Router>
           <div>
-            <ul>
-              <li><Link to="/accueil">Accueil</Link></li>
-              <li>
-                <Link to="/contacts">Vos contacts</Link>
+            <ul className="container-fluid d-flex justify-content-around navbar text-center">
+              <li className="firstItem">
+                <Link to="/" className="navbarItem">Mes contacts</Link>
               </li>
-              <li><Link to="/ajouter_un_contact">Ajouter des contacts à votre répértoire</Link></li>
+              <li>
+                <Link to="/ajouter_un_contact" className="navbarItem">Ajouter des contacts à mon répértoire</Link>
+              </li>
             </ul>
 
-            <hr />
-
-            <Route exact path="/accueil" component={Home}/>
-            <Route path="/contacts" render={myContacts}/>
+            <Route exact path="/" render={myContacts}/>
             <Route path="/ajouter_un_contact" component={Form}/>
           </div>
         </Router>
+      </MuiThemeProvider>
       </div>
     );
   }

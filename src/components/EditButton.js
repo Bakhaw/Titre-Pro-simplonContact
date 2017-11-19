@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import EditForm from './EditForm';
+import ModalEditButton from './ModalEditButton';
 
 class EditButton extends Component {
 
@@ -15,10 +16,16 @@ class EditButton extends Component {
 
   render() {
 
+    const displayer = {
+      "display": this.state.formToggle ? "inline" : "none"
+    }
+
     return (
       <div>
         <div className="edit-button">
-            <button type="submit" className="btn btn-light btn-sm" onClick={() => this.handleDisplay()}>Modifier</button>
+            <ModalEditButton contact={this.props.contact} onClick={() => this.handleDisplay()}/>
+            <div style={displayer}>
+            </div>
         </div>
       </div>
     );
