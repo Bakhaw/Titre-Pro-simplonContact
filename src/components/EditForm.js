@@ -18,7 +18,10 @@ class EditForm extends Component {
             <input className="form-control" defaultValue={this.props.mobile} name="telephone.mobile" placeholder="Contact Perso"/>
             <input className="form-control" defaultValue={this.props.work} name="telephone.work" placeholder="Contact Pro"/>
           </div>
-          <button type="submit" className="btn btn-secondary">Modifier</button>
+          <div>
+            <button type="submit" className="btn btn-secondary">Modifier</button>
+            <button type='submit' className="btn btn-secondary cancelButton" onClick={this.handleClose}>Annuler</button>
+          </div>
         </form>
       </div>
     );

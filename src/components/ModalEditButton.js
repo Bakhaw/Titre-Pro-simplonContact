@@ -13,24 +13,27 @@ export default class ModalEditButton extends React.Component {
   };
 
   handleOpen = () => {
-    this.setState({open: true});
+    this.setState({ open: true });
   };
 
   handleClose = () => {
-    this.setState({open: false});
+    this.setState({ open: false });
   };
 
   render() {
 
     return (
       <div>
-        <button type="submit" className="btn btn-md text-danger" onClick={this.handleOpen}>Modifier</button>
-        <Dialog
-          title="Modifer"
-          modal={true}
-          open={this.state.open}
-        >
-          <EditForm id={this.props.contact._id} nom={this.props.contact.nom} prenom={this.props.contact.prenom} titre={this.props.contact.titre} entreprise={this.props.contact.entreprise} email={this.props.contact.email} adresse={this.props.contact.adresse} mobile={this.props.contact.telephone.mobile} work={this.props.contact.telephone.work}/>
+        <button type="submit" className="btn btn-md text-danger" onClick={this.handleOpen}>
+          Modifier
+        </button>
+        <Dialog title="Modifer" modal={true} open={this.state.open}>
+          <EditForm
+            id={this.props.contact._id} nom={this.props.contact.nom}
+            prenom={this.props.contact.prenom} titre={this.props.contact.titre}
+            entreprise={this.props.contact.entreprise} email={this.props.contact.email}
+            adresse={this.props.contact.adresse} mobile={this.props.contact.telephone.mobile}
+            work={this.props.contact.telephone.work} />
         </Dialog>
       </div>
     );

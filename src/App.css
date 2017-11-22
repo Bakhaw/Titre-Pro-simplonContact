@@ -59,7 +59,9 @@ li {
 .editButton {
   padding-right: 10px;
 }
-
+.cancelButton {
+  margin: 0 10px;
+}
 .editForm {
   width: 100%;
   background-image: url('./images/background_editForm.jpg');
