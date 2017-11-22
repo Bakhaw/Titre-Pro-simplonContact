@@ -1,35 +1,34 @@
 import React, { Component } from 'react';
 import myVideo from '../videos/background_contact.mp4';
 import DeleteButton from './DeleteButton';
-import EditForm from './EditForm';
 import EditButton from './EditButton';
 
 class Contacts extends Component {
   state = {
-          formToggle: false,
-          search: '',
-      }
- handleDisplay = () => {
+    formToggle: false,
+    search: '',
+  };
+  handleDisplay = () => {
     this.setState({
-            formToggle: this.state.formToggle ? false : true
-    })
-  }
+      formToggle: this.state.formToggle ? false : true,
+    });
+  };
+
   updateSearch(e) {
     this.setState({
-      search: e.target.value
+      search: e.target.value,
     });
   }
 
   render() {
-        const displayer = {
-            "display": this.state.formToggle ? "inline" : "none"
-        }
-        const videoUrl = myVideo
 
-        const contacts = this.props.displayContacts.filter(contact => {
-          const str = (contact.nom) + (contact.prenom) + (contact.telephone.mobile) + (contact.telephone.work)
-          return str.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
-        })
+    const videoUrl = myVideo;
+
+    const contacts = this.props.displayContacts.filter(contact => {
+        const str = (contact.nom) + (contact.prenom) + (contact.telephone.mobile)
+                    + (contact.telephone.work);
+        return str.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
+      });
 
     return (
       <div className="container-fluid">
@@ -40,7 +39,9 @@ class Contacts extends Component {
         {/* contacts */}
           <div className="text-center">
             <h1 className="text-secondary">Mes contacts</h1>
-            <input className="form-control col-md-4 contactInput" type="text" value={this.state.search} onChange={this.updateSearch.bind(this)} placeholder="Rechercher un contact"/>
+            <input className="form-control col-md-4 contactInput" type="text"
+                   value={this.state.search} onChange={this.updateSearch.bind(this)}
+                   placeholder="Rechercher un contact"/>
           </div>
           <ul className="d-flex flex-wrap justify-content-center contactContainer">
             {contacts.map((contact, index) =>

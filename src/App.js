@@ -5,23 +5,22 @@ import './App.css';
 import request from 'request';
 import Contacts from './components/Contacts';
 import Form from './components/Form';
-import Home from './components/Home';
 
 class App extends Component {
-state = {
-  contacts: [],
-}
+  state = {
+    contacts: [],
+  };
 
-componentDidMount() {
-  request('http://localhost:3005/', (err, res, body) => {
-    if (err) return console.log(err)
-    if (body) {
-      this.setState({
-        contacts: JSON.parse(body)
-      });
-    }
-  })
-}
+  componentDidMount() {
+    request('http://localhost:3005/', (err, res, body) => {
+      if (err) return console.log(err);
+      if (body) {
+        this.setState({
+          contacts: JSON.parse(body),
+        });
+      }
+    });
+  }
 
   render() {
     const myContacts = (props) => {
@@ -31,9 +30,10 @@ componentDidMount() {
           {...props}
         />
       );
-    }
+    };
 
     return (
+
       // <div className="container-fluid bg-dark">
       //   {/* header */}
       //   <div className="header text-center">
@@ -54,10 +54,12 @@ componentDidMount() {
                 <Link to="/" className="navbarItem">Mes contacts</Link>
               </li>
               <li>
-                <Link to="/ajouter_un_contact" className="navbarItem">Ajouter des contacts à mon répértoire</Link>
+                <Link to="/ajouter_un_contact" className="navbarItem">
+                  Ajouter des contacts à mon répértoire
+                </Link>
               </li>
             </ul>
-
+            
             <Route exact path="/" render={myContacts}/>
             <Route path="/ajouter_un_contact" component={Form}/>
           </div>

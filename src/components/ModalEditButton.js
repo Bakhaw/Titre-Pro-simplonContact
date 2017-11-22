@@ -1,7 +1,5 @@
 import React from 'react';
 import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
 import EditForm from './EditForm';
 
 /**
@@ -33,7 +31,7 @@ export default class ModalEditButton extends React.Component {
             prenom={this.props.contact.prenom} titre={this.props.contact.titre}
             entreprise={this.props.contact.entreprise} email={this.props.contact.email}
             adresse={this.props.contact.adresse} mobile={this.props.contact.telephone.mobile}
-            work={this.props.contact.telephone.work} />
+            work={this.props.contact.telephone.work}/>
         </Dialog>
       </div>
     );
