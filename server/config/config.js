@@ -1,5 +1,5 @@
 module.exports = {
-  port: 3005,
+  port: process.env.PORT || 3005,
 
   // Local address
   // mongoUrl: 'mongodb://localhost:27017/simplon-contact'
