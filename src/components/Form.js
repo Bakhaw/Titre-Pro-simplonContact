@@ -12,7 +12,7 @@ class Form extends Component {
             <input className="col-md-4 form-control" name="prenom" placeholder="Prénom (obligatoire)"/>
             <input className="col-md-4 form-control" name="titre" placeholder="Poste"/>
             <input className="col-md-4 form-control" name="entreprise" placeholder="Entreprise"/>
-            <input className="col-md-4 form-control" name="email" placeholder="Adresse mail (obligatoire)"/>
+            <input className="col-md-4 form-control" name="email" placeholder="Adresse mail"/>
             <input className="col-md-4 form-control" name="adresse" placeholder="Adresse"/>
             <input className="col-md-4 form-control" name="telephone.mobile" placeholder="Contact Perso"/>
             <input className="col-md-4 form-control" name="telephone.work" placeholder="Contact Pro"/>

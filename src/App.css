@@ -2,6 +2,9 @@
 body {
   font-family: 'Poiret One', cursive;
 }
+.bodyContainer {
+  min-height: 100vh;
+}
 .navbarItem {
   color: gold;
   font-size: 1.5em;
@@ -62,7 +65,11 @@ li {
 
 .editForm {
   width: 100%;
-  background-image: url('./images/background_editForm.jpg');
+  background-image: url('./images/bg-image.png');
+  background-size: contain;
+}
+.closeButton:hover {
+  cursor: pointer;
 }
 .contactInput {
   margin: 40px auto;
@@ -73,11 +80,13 @@ li {
   border-color: rgb(226, 110, 26);
   box-shadow: 0 0 0 0.2rem rgba(226, 110, 26, .25)
 }
+.video-container {
+  background-color: red;
+}
 #bg-video {
-  right: 0;
-  bottom: 0;
   left: 0;
   top: 0;
   position: absolute;
+  width: 100%;
   z-index: -1;
 }

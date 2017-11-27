@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import EditForm from './EditForm';
 import ModalEditButton from './ModalEditButton';
 
 class EditButton extends Component {

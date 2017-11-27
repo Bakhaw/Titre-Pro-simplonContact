@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import './App.css';
-import request from 'request';
 import Contacts from './components/Contacts';
 import Form from './components/Form';
-import Home from './components/Home';
+// import myVideo from './videos/background_contact.mp4';
+import './App.css';
 
 class App extends Component {
 state = {
@@ -13,57 +12,46 @@ state = {
 }
 
 componentDidMount() {
-  request('http://localhost:3005/', (err, res, body) => {
-    if (err) return console.log(err)
-    if (body) {
-      this.setState({
-        contacts: JSON.parse(body)
-      });
-    }
-  })
+  fetch('http://localhost:3005') // URL of my dataBase
+    .then(data => data.json())
+    .then(contacts => this.setState({ contacts }));
 }
 
   render() {
     const myContacts = (props) => {
       return (
         <Contacts
-          displayContacts={this.state.contacts}
-          {...props}
-        />
+          displayContacts={this.state.contacts} {...props}/>
       );
     }
 
     return (
-      // <div className="container-fluid bg-dark">
-      //   {/* header */}
-      //   <div className="header text-center">
-      //     <h1>BIENVENUE SUR VOTRE ANNUAIRE PERSONNALISE</h1>
-      //     <h2>Créez votre propre liste de contacts</h2>
-      //   </div>
-      //   {/* contacts */}
-      //   <div className="contacts">
-      //     <Contacts displayContacts={this.state.contacts} />
-      //   </div>
-      // </div>
-      <div >
-        <MuiThemeProvider>
-        <Router>
-          <div>
-            <ul className="container-fluid d-flex justify-content-around navbar text-center">
-              <li className="firstItem">
-                <Link to="/" className="navbarItem">Mes contacts</Link>
-              </li>
-              <li>
-                <Link to="/ajouter_un_contact" className="navbarItem">Ajouter des contacts à mon répértoire</Link>
-              </li>
-            </ul>
 
-            <Route exact path="/" render={myContacts}/>
-            <Route path="/ajouter_un_contact" component={Form}/>
-          </div>
-        </Router>
-      </MuiThemeProvider>
+      <div className="bodyContainer">
+        <MuiThemeProvider>
+          {/* <div className='video-container'>
+            <video loop fullscreen autoPlay id='bg-video'>
+                <source src={myVideo} type="video/mp4"/>
+                <source src={myVideo} type="video/ogg"/>
+            </video>
+          </div> */}
+          <Router>
+            <div>
+              <ul className="container-fluid d-flex justify-content-around navbar text-center">
+                <li className="firstItem">
+                  <Link to="/" className="navbarItem">Mes contacts</Link>
+                </li>
+                <li>
+                  <Link to="/ajouter_un_contact" className="navbarItem">Ajouter des contacts à mon répértoire</Link>
+                </li>
+              </ul>
+              <Route exact path="/" render={myContacts}/>
+              <Route path="/ajouter_un_contact" component={Form}/>
+            </div>
+          </Router>
+        </MuiThemeProvider>
       </div>
+
     );
   }
 }
