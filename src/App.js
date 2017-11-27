@@ -7,9 +7,9 @@ import Form from './components/Form';
 import './App.css';
 
 class App extends Component {
-state = {
-  contacts: [],
-}
+  state = {
+    contacts: [],
+  };
 
 componentDidMount() {
   fetch('http://localhost:3005') // URL of my dataBase
@@ -23,7 +23,7 @@ componentDidMount() {
         <Contacts
           displayContacts={this.state.contacts} {...props}/>
       );
-    }
+    };
 
     return (
 

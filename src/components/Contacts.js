@@ -18,10 +18,11 @@ class Contacts extends Component {
 
   render() {
 
-        const contacts = this.props.displayContacts.filter(contact => {
-          const str = (contact.nom) + (contact.prenom) + (contact.telephone.mobile) + (contact.telephone.work)
-          return str.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
-        })
+    const contacts = this.props.displayContacts.filter(contact => {
+        const str = (contact.nom) + (contact.prenom) + (contact.telephone.mobile)
+                    + (contact.telephone.work);
+        return str.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
+      });
 
     return (
       <div className="container-fluid">

@@ -8,11 +8,11 @@ export default class ModalEditButton extends React.Component {
   };
 
   handleOpen = () => {
-    this.setState({open: true});
+    this.setState({ open: true });
   };
 
   handleClose = () => {
-    this.setState({open: false});
+    this.setState({ open: false });
   };
 
   render() {
@@ -23,7 +23,7 @@ export default class ModalEditButton extends React.Component {
         <Dialog modal={true} open={this.state.open}>
           <div className="d-flex justify-content-between align-items-center">
             <h4>Modifier</h4>
-            <p onClick={this.handleClose} className='closeButton'>x</p>
+            <h5 onClick={this.handleClose} className='closeButton'>x</h5>
           </div>
           <EditForm nom={this.props.contact.nom} prenom={this.props.contact.prenom} titre={this.props.contact.titre}
                     entreprise={this.props.contact.entreprise} email={this.props.contact.email}

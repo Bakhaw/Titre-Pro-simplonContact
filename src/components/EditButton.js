@@ -4,20 +4,20 @@ import ModalEditButton from './ModalEditButton';
 class EditButton extends Component {
 
   state = {
-          formToggle: false
-      }
+    formToggle: false,
+  };
 
   handleDisplay = () => {
     this.setState({
-        formToggle: this.state.formToggle ? false : true
-    })
-  }
+      formToggle: this.state.formToggle ? false : true,
+    });
+  };
 
   render() {
 
     const displayer = {
-      "display": this.state.formToggle ? "inline" : "none"
-    }
+      display: this.state.formToggle ? 'inline' : 'none',
+    };
 
     return (
       <div>
